@@ -8,6 +8,10 @@ export type User = {
     image: string
     links: string
 }
+
+export type HandleResponse = {
+  message: string
+}
 export type UserHandle = Pick<User, "description" | "handle" | "image" | "links" | "name">
 
 

@@ -1,6 +1,6 @@
 import {isAxiosError} from "axios"
 import api from "../config/axios"
-import type { ProfileForm, User, UserHandle } from "../Types"
+import type { ProfileForm, User,HandleResponse, UserHandle } from "../Types"
 
 export async function getUser() {
     
@@ -57,7 +57,7 @@ export async function updateProfile(formData: ProfileForm) {
         }
     }
 
-export async function searchByHandle(handle: string) {
+/*export async function searchByHandle(handle: string) {
     
     try {
             
@@ -69,4 +69,19 @@ export async function searchByHandle(handle: string) {
                 
             }
         }
+    }*/
+
+export async function searchByHandle(handle: string): Promise<HandleResponse> {
+    
+    try {
+        const { data } = await api.post<HandleResponse>("/search", { handle })
+        return data
+
+    } catch (error) {
+        if (isAxiosError(error) && error.response) {
+            throw new Error(error.response.data.error)
+        }
+
+        throw new Error("Error buscando handle")
     }
+}     
