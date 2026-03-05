@@ -64,7 +64,7 @@ export default function SearchForm() {
       <Link
         to={"/auth/register"}
         state={{ handle: slugify(handle) }}
-        className="text-white underline"
+        className="text-cyan-400 underline"
       >
         Registro
       </Link>
