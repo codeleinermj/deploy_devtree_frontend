@@ -49,13 +49,28 @@ export default function SearchForm() {
                 <ErrorMessage>{errors.handle.message}</ErrorMessage>
             )}
 
-            <div className="mt-10">
-                {mutation.isPending && <p className="text-center">Cargando...</p>}
-                {mutation.error && <p className="text-center text-red-600 font-black">{mutation.error.message}</p>}
-                {mutation.data && <p className="text-center text-green-600 font-black">
-                        {mutation.data.message}  Ir a <Link to={"/auth/register"} state={{handle: slugify(handle)}}>Registro</Link>
-                    </p>} 
-            </div>
+          <div className="mt-10">
+  {mutation.isPending && <p className="text-center">Cargando...</p>}
+  
+  {mutation.error && (
+    <p className="text-center text-red-600 font-black">
+      {mutation.error.message}
+    </p>
+  )}
+
+  {mutation.data && (
+    <p className="text-center text-green-600 font-black">
+      {mutation.data.message} Ir a{" "}
+      <Link
+        to={"/auth/register"}
+        state={{ handle: slugify(handle) }}
+        className="text-white underline"
+      >
+        Registro
+      </Link>
+    </p>
+  )}
+</div>
 
             <input
                 type="submit"
