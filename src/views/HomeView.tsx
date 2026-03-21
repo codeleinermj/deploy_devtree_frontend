@@ -13,8 +13,6 @@ export default function HomeView() {
                 Todas tus<span className="text-cyan-400"> Redes Sociales </span>
                 en un enlace.
               </h1>
-              <h2 className="text-3xl font-black text-cyan-400">Desarrollado por   <span className="text-black">Leiner Mejias</span></h2>
-
               <p className="text-slate-800 text-xl">
                 Unete, vive, y comparte tus redes sociales al mundo.
                 Tiktok, Facebook, Instagram, Youtube, Github y mas.
