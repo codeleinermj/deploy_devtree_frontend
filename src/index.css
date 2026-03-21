@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-dark-900 text-white antialiased;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl;
+  }
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500;
+  }
+  .glow-border {
+    @apply border border-cyan-400/20 shadow-[0_0_15px_rgba(34,211,238,0.15)];
+  }
+}
