@@ -20,16 +20,15 @@ export default function DevTreeLink({link}: DevTreeLinkProps) {
     <li
     ref={setNodeRef}
     style={style}
-    className="bg-white px-5 py-2 flex items-center gap-5 rounded-lg"
+    className="bg-white/5 border border-white/10 px-5 py-3 flex items-center gap-4 rounded-xl cursor-grab hover:border-cyan-400/30 transition-colors"
     {...attributes}
     {...listeners}
     >
         <div
-            className=" w-12 h-12 bg-cover"
+            className="w-10 h-10 bg-cover bg-center brightness-200"
             style={{ backgroundImage: `url('/social/icon_${link.name}.svg')` }}>
-
         </div>
-        <p className="capitalize">Visita mi: <span className="font-bold"> {link.name}</span></p>
+        <p className="capitalize text-gray-300">Visita mi: <span className="font-bold text-white"> {link.name}</span></p>
     </li>
   )
 }

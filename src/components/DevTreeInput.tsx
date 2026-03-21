@@ -5,32 +5,32 @@ import { classNames } from '../utils'
 type DevtreeInputProps = {
   item: DevTreeLink
   handleUrlchange: (e: React.ChangeEvent<HTMLInputElement>) => void
-  handleEnableLink: (socialNetwork: string)=> void 
+  handleEnableLink: (socialNetwork: string)=> void
 }
 
 export default function DevTreeInput({ item, handleUrlchange , handleEnableLink}: DevtreeInputProps) {
 
   return (
-
-    <div className="bg bg-white shadow-sm p-5 flex items-center gap-3">
+    <div className="glass border border-white/10 p-4 flex items-center gap-3 hover:border-white/20 transition-colors">
       <div
-        className=" w-12 h-12 bg-cover"
+        className="w-10 h-10 bg-cover bg-center flex-shrink-0 brightness-200"
         style={{ backgroundImage: `url('/social/icon_${item.name}.svg')` }}
       ></div>
       <input
         type="text"
-        className="flex-1 border border-gray-100 rounded-lg"
+        className="flex-1 bg-white/5 border border-white/10 rounded-xl p-2 text-white placeholder-gray-500 text-sm focus:border-cyan-400/40 focus:ring-1 focus:ring-cyan-400/20 transition-colors"
         value={item.url}
         onChange={handleUrlchange}
         name={item.name}
+        placeholder={`URL de ${item.name}`}
       />
 
       <Switch
         checked={item.enabled}
         onChange={() => handleEnableLink(item.name)}
         className={classNames(
-          item.enabled ? 'bg-blue-500' : 'bg-gray-200',
-          'relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2'
+          item.enabled ? 'bg-cyan-500' : 'bg-gray-700',
+          'relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-cyan-400/30 focus:ring-offset-2 focus:ring-offset-dark-900'
         )}
       >
         <span

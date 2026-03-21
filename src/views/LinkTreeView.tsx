@@ -1,3 +1,4 @@
+import { motion } from "framer-motion"
 import { useEffect, useState } from "react"
 import { social } from "../data/social"
 import DevTreeInput from "../components/DevTreeInput"
@@ -121,21 +122,36 @@ export default function LinkTreeView() {
   }
 
   return (
-
     <>
-        <div className="space-y-5">
-          {devTreeLinks.map( item =>(
-            <DevTreeInput
-            key={item.name}
-            item={item}
-            handleUrlchange={handleUrlchange}
-            handleEnableLink={handleEnableLink}
-            />
-            ))}
-            <button className="bg-cyan-400 p-2 text-lg w-full uppercase text-slate-600 rounded font-bold" onClick={() => mutate(queryClient.getQueryData(["user"])!
-)} >
-              Guardar Cambios</button>
-        </div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.4 }}
+          className="space-y-4"
+        >
+          {devTreeLinks.map((item, i) =>(
+            <motion.div
+              key={item.name}
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.05, type: "spring" as const, stiffness: 300, damping: 24 }}
+            >
+              <DevTreeInput
+                item={item}
+                handleUrlchange={handleUrlchange}
+                handleEnableLink={handleEnableLink}
+              />
+            </motion.div>
+          ))}
+          <motion.button
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="w-full py-3 bg-gradient-to-r from-cyan-400 to-blue-500 text-dark-900 uppercase font-black text-sm rounded-xl cursor-pointer tracking-wider transition-shadow hover:shadow-[0_0_30px_rgba(34,211,238,0.3)]"
+            onClick={() => mutate(queryClient.getQueryData(["user"])!)}
+          >
+            Guardar Cambios
+          </motion.button>
+        </motion.div>
     </>
   )
 }

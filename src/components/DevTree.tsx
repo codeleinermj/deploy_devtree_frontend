@@ -68,14 +68,14 @@ export default function DevTree({data} : DevTreeProps) {
     <>
             <Header/>
 
-            <div className="bg-gray-100  min-h-screen py-10">
-                <main className="mx-auto max-w-5xl p-10 md:p-0">
+            <div className="bg-dark-900 min-h-screen py-10">
+                <main className="mx-auto max-w-6xl px-6 lg:px-8">
 
                     <NavigationTabs/>
-                    
+
                     <div className="flex justify-end">
-                        <Link 
-                            className="font-bold text-right text-slate-800 text-2xl"
+                        <Link
+                            className="font-bold text-right text-cyan-400 hover:text-cyan-300 text-lg transition-colors"
                             to={`/${data.handle} `}
                             target="_blank"
                             rel="noreferrer noopener"
@@ -83,24 +83,23 @@ export default function DevTree({data} : DevTreeProps) {
                     </div>
 
                     <div className="flex flex-col md:flex-row gap-10 mt-10">
-                        <div className="flex-1 ">
+                        <div className="flex-1">
                             <Outlet />
                         </div>
-                        <div className="w-full md:w-96 rounded-lg bg-slate-800 px-5 py-10 space-y-6">
-                            <p className="test-4xl text-center text-white">{data.handle}</p>
-                            {data.image && 
-                            <img src={data.image} alt="Imagen Perfil"  className="mx-auto max-w-[250px]"/>
+                        <div className="w-full md:w-96 glass glow-border px-5 py-10 space-y-6">
+                            <p className="text-xl text-center text-white font-bold">{data.handle}</p>
+                            {data.image &&
+                            <img src={data.image} alt="Imagen Perfil" className="mx-auto max-w-[250px] rounded-xl"/>
                             }
 
-                           
-                             <p className=" text-center text-lg font-black text-white">{data.description}</p>
-                       
+                             <p className="text-center text-lg font-black text-gray-300">{data.description}</p>
+
                        <DndContext
                        collisionDetection={closestCenter}
                        onDragEnd={handleDragEnd}
                        >
 
-                            <div className="mt-20 flex flex-col gap-5">
+                            <div className="mt-10 flex flex-col gap-4">
                                 <SortableContext
                                     items={enabledLinks}
                                     strategy={verticalListSortingStrategy}
@@ -111,13 +110,13 @@ export default function DevTree({data} : DevTreeProps) {
                                     ))}
                                 </SortableContext>
                             </div>
-                            
+
                         </DndContext>
                         </div>
                     </div>
                 </main>
             </div>
-            <Toaster position="top-right" />
+            <Toaster position="top-right" theme="dark" />
     </>
 
   )
